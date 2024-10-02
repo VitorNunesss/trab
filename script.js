@@ -79,8 +79,8 @@ function fetchCharacters(page) {
     fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
         .then(response => response.json())
         .then(data => {
-            allCharacters = [...allCharacters, ...data.results]; // Armazena os personagens
-            renderFilteredCharacters(allCharacters); // Renderiza com os filtros aplicados
+            allCharacters = [...allCharacters, ...data.results];
+            renderFilteredCharacters(allCharacters);
             isLoading = false;  
         })
         .catch(error => {
