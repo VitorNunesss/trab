@@ -22,7 +22,7 @@ h1 {
 
 .filters {
     display: flex;
-    justify-content: center; /* Centraliza os elementos filhos horizontalmente */
+    justify-content: center;
     margin-bottom: 20px;
 }
 
@@ -31,7 +31,7 @@ h1 {
     font-size: 16px;
     border: 1px solid #ffffff;
     border-radius: 5px;
-    margin: 0 10px; /* Espaço entre os filtros */
+    margin: 0 10px; 
 }
 
 .character-grid {
@@ -47,26 +47,26 @@ h1 {
     padding: 15px;
     text-align: center;
     position: relative;
-    transition: transform 0.3s ease; /* Transição suave ao aumentar o cartão */
-    overflow: hidden; /* Evita que o conteúdo transborde */
+    transition: transform 0.3s ease; 
+    overflow: hidden; 
 }
 
 .character-card:hover {
-    transform: scale(1.05); /* Aumenta o cartão ao passar o mouse */
+    transform: scale(1.05); 
 }
 
 .character-details {
-    display: none; /* Oculta os detalhes por padrão */
+    display: none; 
 }
 
 .character-card:hover .character-details {
-    display: block; /* Mostra os detalhes ao passar o mouse */
+    display: block; 
 }
 
 .favorite {
     position: absolute;
-    top: 10px; /* Ajuste a posição vertical se necessário */
-    left: 50%; /* Centraliza horizontalmente */
+    top: 10px; 
+    left: 50%; 
     transform: translateX(-50%);
     cursor: pointer; 
     font-size: 24px;
@@ -74,5 +74,5 @@ h1 {
 }
 
 .favorited {
-    color: gold; /* Cor para itens favoritos */
+    color: gold; 
 }
