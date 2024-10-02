@@ -135,21 +135,21 @@ function renderCharacters() {
     }
 }
 
-// Pesquisa
+
 searchInput.addEventListener('input', (e) => {
     const query = e.target.value.trim(); 
     characterGrid.innerHTML = ''; 
     query.length ? fetchSearchedCharacters(query) : renderCharacters(); 
 });
 
-// Botão de filtro de favoritos
+
 favoriteFilterButton.addEventListener('click', () => {
     showFavoritesOnly = !showFavoritesOnly; 
     favoriteFilterButton.textContent = showFavoritesOnly ? 'Mostrar Todos' : 'Mostrar Favoritos';
     renderCharacters();
 });
 
-// Filtros de espécies e status
+
 speciesFilter.addEventListener('change', () => {
     renderCharacters(); 
 });
@@ -158,7 +158,7 @@ statusFilter.addEventListener('change', () => {
     renderCharacters(); 
 });
 
-// Rolagem infinita
+
 window.addEventListener('scroll', () => {
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 100 && !isLoading) {
         currentPage++; 
@@ -166,5 +166,5 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Inicializa a exibição de personagens
+
 renderCharacters();
