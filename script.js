@@ -8,8 +8,8 @@ let currentPage = 1;
 let isLoading = false;  
 let favorites = JSON.parse(localStorage.getItem('favorites')) || []; 
 let showFavoritesOnly = false;
-let allCharacters = []; // Armazena todos os personagens
-let renderedCharacterIds = new Set(); // Para rastrear IDs já renderizados
+let allCharacters = []; 
+let renderedCharacterIds = new Set(); 
 
 function saveFavorites() {
     localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -31,7 +31,7 @@ function translateSpecies(species) {
         "Human": "Humano",
         "Alien": "Alienígena",
     };
-    return speciesTranslation[species] || species; // Retorna a tradução ou a espécie original
+    return speciesTranslation[species] || species; 
 }
 
 function translateStatus(status) {
@@ -40,7 +40,7 @@ function translateStatus(status) {
         "Dead": "Morto",
         "unknown": "Desconhecido"
     };
-    return statusTranslation[status] || status; // Retorna a tradução ou o status original
+    return statusTranslation[status] || status; 
 }
 
 function createCharacterCard(character) {
@@ -103,8 +103,8 @@ function fetchSearchedCharacters(query) {
 }
 
 function filterCharacters(characters) {
-    const species = speciesFilter.value; // Obtém a espécie selecionada
-    const status = statusFilter.value; // Obtém o status selecionado
+    const species = speciesFilter.value; 
+    const status = statusFilter.value; 
 
     return characters.filter(character => {
         const speciesMatch = species ? character.species === species : true;
@@ -119,19 +119,19 @@ function renderFilteredCharacters(characters) {
         // Verifica se o ID já foi renderizado
         if (!renderedCharacterIds.has(character.id)) {
             createCharacterCard(character);
-            renderedCharacterIds.add(character.id); // Adiciona o ID ao conjunto
+            renderedCharacterIds.add(character.id); 
         }
     });
 }
 
 function renderCharacters() {
     characterGrid.innerHTML = ''; 
-    renderedCharacterIds.clear(); // Limpa o conjunto quando renderizando novamente
+    renderedCharacterIds.clear();
     if (showFavoritesOnly) {
-        const filteredFavorites = favorites.map(fetchCharacterById); // Renderiza apenas favoritos
+        const filteredFavorites = favorites.map(fetchCharacterById); 
         Promise.all(filteredFavorites).then(renderFilteredCharacters);
     } else {
-        fetchCharacters(currentPage); // Renderiza todos os personagens
+        fetchCharacters(currentPage); 
     }
 }
 
@@ -144,18 +144,18 @@ searchInput.addEventListener('input', (e) => {
 
 // Botão de filtro de favoritos
 favoriteFilterButton.addEventListener('click', () => {
-    showFavoritesOnly = !showFavoritesOnly; // Alterna entre mostrar favoritos e todos
+    showFavoritesOnly = !showFavoritesOnly; 
     favoriteFilterButton.textContent = showFavoritesOnly ? 'Mostrar Todos' : 'Mostrar Favoritos';
     renderCharacters();
 });
 
 // Filtros de espécies e status
 speciesFilter.addEventListener('change', () => {
-    renderCharacters(); // Chama renderCharacters que irá filtrar os personagens
+    renderCharacters(); 
 });
 
 statusFilter.addEventListener('change', () => {
-    renderCharacters(); // Chama renderCharacters que irá filtrar os personagens
+    renderCharacters(); 
 });
 
 // Rolagem infinita
